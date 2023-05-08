@@ -11,13 +11,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String text = 'Detail ga kirish';
   Future _openDetils() async {
     await Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return const DetailPage(input: "Salom");
     }));
     if (kDebugMode) {
-      print("DE");
+      text = 'Detail chiqdi';
+      setState(() {});
     }
   }
 
@@ -26,11 +28,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Center(
         child: MaterialButton(
-            onPressed: () async{
+            onPressed: () async {
               await _openDetils();
             },
             color: Colors.blue,
-            child: const Text("detailga kirish")),
+            child:  Text(text)),
       ),
     );
   }
